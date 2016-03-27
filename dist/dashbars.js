@@ -41,6 +41,8 @@ var d = function d($register, $helper){
 };
 
 //dash.js
+var _ = typeof window === 'undefined' || window._ === undefined && typeof require === 'function' ? require('lodash') : window._;
+
 // jshint unused:false
 var dash = function dash($register, $helper){
     //List
