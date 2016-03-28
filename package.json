@@ -10,7 +10,7 @@
     },
     "repository": "pismute/dashbars",
     "license": "MIT",
-    "main": "./dist/index",
+    "main": "./dist/dashbars",
     "keywords": [
         "dashbars",
         "handlebars",
