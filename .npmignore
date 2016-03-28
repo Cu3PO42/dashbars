@@ -4,8 +4,6 @@ npm-debug.log
 docs/
 test/
 lib/
-dist/dashbars.js
-dist/dashbars.min.js
 gulpfile.js
 bower.json
 node_modules/
