@@ -282,6 +282,7 @@ Combinational functions, a bit experimental:
 - [n-subtract](#n-subtract-left-right) `(left, right)`
 - [n-multiply](#n-multiply-left-right) `(left, right)`
 - [n-divide](#n-divide-left-right) `(left, right)`
+- [n-modulo](#n-modulo-left-right) `(left, right)`
 - [n-bls](#n-bls-left-right) `(left, right)`
 - [n-brs](#n-brs-left-right) `(left, right)`
 - [n-brss](#n-brss-left-right) `(left, right)`
@@ -918,6 +919,12 @@ It returns an empty string(`''`).
 
 ```
 {{{n-divide 10 2}}} // => 5
+```
+
+##### n-modulo `(left, right)`
+
+```
+{{{n-modulo 10 3}}} // => 1
 ```
 
 ##### n-bls `(left, right)`
