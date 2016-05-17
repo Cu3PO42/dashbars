@@ -282,6 +282,12 @@ Combinational functions, a bit experimental:
 - [n-subtract](#n-subtract-left-right) `(left, right)`
 - [n-multiply](#n-multiply-left-right) `(left, right)`
 - [n-divide](#n-divide-left-right) `(left, right)`
+- [n-bls](#n-bls-left-right) `(left, right)`
+- [n-brs](#n-brs-left-right) `(left, right)`
+- [n-brss](#n-brss-left-right) `(left, right)`
+- [n-band](#n-band-left-right) `(left, right)`
+- [n-bor](#n-bor-left-right) `(left, right)`
+- [n-bxor](#n-bxor-left-right) `(left, right)`
 
 ### String
 
@@ -912,6 +918,48 @@ It returns an empty string(`''`).
 
 ```
 {{{n-divide 10 2}}} // => 5
+```
+
+##### n-bls `(left, right)`
+
+```
+{{{n-bls 1 2}}} // => 4
+```
+
+##### n-brs `(left, right)`
+
+Zero fill right shift.
+
+```
+{{{n-brs 2 1}}} // => 1
+{{{n-brs -1 2}}} // => 0x3FFFFFFF
+```
+
+##### n-brss `(left, right)`
+
+Sign propagating right shift.
+
+```
+{{{n-brs 2 1}}} // => 1
+{{{n-brs -1 2}}} // => 1
+```
+
+##### n-band `(left, right)`
+
+```
+{{{n-band 5 3}}} // => 1
+```
+
+##### n-bor `(left, right)`
+
+```
+{{{n-bor 5 3}}} // => 7
+```
+
+##### n-bxor `(left, right)`
+
+```
+{{{n-bxor 5 3}}} // => 6
 ```
 
 ### String
