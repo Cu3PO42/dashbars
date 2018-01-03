@@ -2,8 +2,8 @@
 'use strict';
 
 var expect = require('chai').expect;
-var _ = require('lodash');
 var mock = require('./mock-helpable').create();
+const range = require('lodash.range');
 
 describe('dash', function () {
     require('../lib/dashbars').create().help(mock);
@@ -49,7 +49,7 @@ describe('dash', function () {
         it('-take', function () {
             var helper = mock.helper('-take');
 
-            var list = _.range(1,20);
+            var list = range(1,20);
             expect(helper(5, list, options)).to.deep.equal([1,2,3,4,5]);
             expect(helper(5, list, options)).to.not.equal(list);
         });
@@ -57,7 +57,7 @@ describe('dash', function () {
         it('-drop', function () {
             var helper = mock.helper('-drop');
 
-            var list = _.range(1,20);
+            var list = range(1,20);
             expect(helper(15, list, options)).to.deep.equal([16,17,18,19]);
             expect(helper(15, list, options)).to.not.equal(list);
         });
@@ -65,40 +65,40 @@ describe('dash', function () {
         it('-filter', function () {
             var helper = mock.helper('-filter');
 
-            var list = _.range(1,20);
-            expect(helper('n-even?', list, options)).to.deep.equal(_.range(2, 20, 2));
+            var list = range(1,20);
+            expect(helper('n-even?', list, options)).to.deep.equal(range(2, 20, 2));
             expect(helper('n-even?', list, options)).to.not.equal(list);
         });
 
         it('-take-while', function () {
             var helper = mock.helper('-take-while');
 
-            var list = _.range(1,20);
+            var list = range(1,20);
             expect(helper('_lt-3?', list, options)).to.deep.equal([1,2]);
             expect(helper('_lt-3?', list, options)).to.not.equal(list);
-            expect(helper('n-even?', _.range(0, 5), options)).to.deep.equal([0]);
+            expect(helper('n-even?', range(0, 5), options)).to.deep.equal([0]);
         });
 
         it('-drop-while', function () {
             var helper = mock.helper('-drop-while');
 
-            var list = _.range(1,20);
-            expect(helper('_lt-3?', list, options)).to.deep.equal(_.range(3,20));
+            var list = range(1,20);
+            expect(helper('_lt-3?', list, options)).to.deep.equal(range(3,20));
             expect(helper('_lt-3?', list, options)).to.not.equal(list);
 
-            expect(helper('n-even?', _.range(0, 5), options)).to.deep.equal([1,2,3,4]);
+            expect(helper('n-even?', range(0, 5), options)).to.deep.equal([1,2,3,4]);
         });
 
         it('-slice', function () {
             var helper = mock.helper('-slice');
 
-            var list = _.range(0,10);
-            expect(helper(list, options)).to.deep.equal(_.range(0,10));
+            var list = range(0,10);
+            expect(helper(list, options)).to.deep.equal(range(0,10));
             expect(helper(list, options)).to.not.equal(list);
 
-            expect(helper(_.range(0,10), 0, 5, options)).to.deep.equal(_.range(0,5));
-            expect(helper(_.range(0,10), 0, options)).to.deep.equal(_.range(0,10));
-            expect(helper(_.range(0,10), 5, options)).to.deep.equal(_.range(5,10));
+            expect(helper(range(0,10), 0, 5, options)).to.deep.equal(range(0,5));
+            expect(helper(range(0,10), 0, options)).to.deep.equal(range(0,10));
+            expect(helper(range(0,10), 5, options)).to.deep.equal(range(5,10));
         });
 
         it('-flatten', function () {
@@ -126,7 +126,7 @@ describe('dash', function () {
             expect(helper(5, options)).to.deep.equal([0,1,2,3,4]);
             expect(helper(0, 5, options)).to.deep.equal([0,1,2,3,4]);
             expect(helper(0, 5, 2, options)).to.deep.equal([0,2,4]);
-            expect(helper(0, -5, options)).to.be.empty;
+            expect(helper(0, -5, 1, options)).to.be.empty;
             expect(helper(0, -5, -1, options)).to.deep.equal([0,-1,-2,-3,-4]);
             expect(helper(0, -5, -2, options)).to.deep.equal([0,-2,-4]);
             expect(helper(0, options)).to.be.empty;
@@ -143,33 +143,33 @@ describe('dash', function () {
         it('-size', function () {
             var helper = mock.helper('-size');
 
-            expect(helper(_.range(1,20), options)).to.equal(19);
+            expect(helper(range(1,20), options)).to.equal(19);
         });
 
         it('-find', function () {
             var helper = mock.helper('-find');
 
-            expect(helper('_lt-3?', _.range(1,20), options)).to.equal(1);
-            expect(helper('_gt-15?', _.range(1,20), options)).to.equal(16);
+            expect(helper('_lt-3?', range(1,20), options)).to.equal(1);
+            expect(helper('_gt-15?', range(1,20), options)).to.equal(16);
         });
 
         it('-reduce', function () {
             var helper = mock.helper('-reduce');
 
-            expect(helper('n-add', "", _.range(1,11), options)).to.equal("12345678910");
-            expect(helper('n-add', 0, _.range(1,11), options)).to.equal(55);
+            expect(helper('n-add', "", range(1,11), options)).to.equal("12345678910");
+            expect(helper('n-add', 0, range(1,11), options)).to.equal(55);
         });
 
         it('-first', function () {
             var helper = mock.helper('-first');
 
-            expect(helper(_.range(1,10), options)).to.equal(1);
+            expect(helper(range(1,10), options)).to.equal(1);
         });
 
         it('-last', function () {
             var helper = mock.helper('-last');
 
-            expect(helper(_.range(1,10), options)).to.equal(9);
+            expect(helper(range(1,10), options)).to.equal(9);
         });
 
         it('-join', function () {
@@ -182,25 +182,25 @@ describe('dash', function () {
         it('-sum', function () {
             var helper = mock.helper('-sum');
 
-            expect(helper(_.range(1,11), options)).to.equal(55);
+            expect(helper(range(1,11), options)).to.equal(55);
         });
 
         it('-product', function () {
             var helper = mock.helper('-product');
 
-            expect(helper(_.range(1,11), options)).to.equal(3628800);
+            expect(helper(range(1,11), options)).to.equal(3628800);
         });
 
         it('-min', function () {
             var helper = mock.helper('-min');
 
-            expect(helper(_.range(1, 11), options)).to.equal(1);
+            expect(helper(range(1, 11), options)).to.equal(1);
         });
 
         it('-max', function () {
             var helper = mock.helper('-max');
 
-            expect(helper(_.range(1, 11), options)).to.equal(10);
+            expect(helper(range(1, 11), options)).to.equal(10);
         });
     });
 
@@ -208,7 +208,7 @@ describe('dash', function () {
         it('-group-by', function () {
             var helper = mock.helper('-group-by');
 
-            expect(helper('n-even?', _.range(1,5), options)).to.deep.equal({
+            expect(helper('n-even?', range(1,5), options)).to.deep.equal({
                 'true':[2,4],
                 'false':[1,3]
             });
@@ -219,10 +219,10 @@ describe('dash', function () {
         it('-grouped', function () {
             var helper = mock.helper('-grouped');
 
-            expect(helper(3, _.range(1,11), options)).to.deep.equal([
+            expect(helper(3, range(1,11), options)).to.deep.equal([
                 [1,2,3], [4,5,6], [7,8,9], [10]
             ]);
-            expect(helper(2, _.range(1,11), options)).to.deep.equal([
+            expect(helper(2, range(1,11), options)).to.deep.equal([
                 [1,2], [3,4], [5,6], [7,8], [9,10]
             ]);
         });
@@ -232,29 +232,29 @@ describe('dash', function () {
         it('-every?', function () {
             var helper = mock.helper('-every?');
 
-            expect(helper('n-even?', _.range(0,11), options)).to.be.false;
-            expect(helper('n-even?', _.range(0,11,2), options)).to.be.true;
+            expect(helper('n-even?', range(0,11), options)).to.be.false;
+            expect(helper('n-even?', range(0,11,2), options)).to.be.true;
         });
 
         it('-some?', function () {
             var helper = mock.helper('-some?');
 
-            expect(helper('n-even?', _.range(0,11), options)).to.be.true;
-            expect(helper('n-even?', _.range(1,11,2), options)).to.be.false;
+            expect(helper('n-even?', range(0,11), options)).to.be.true;
+            expect(helper('n-even?', range(1,11,2), options)).to.be.false;
         });
 
         it('-none?', function () {
             var helper = mock.helper('-none?');
 
-            expect(helper('n-even?', _.range(0,11), options)).to.be.false;
-            expect(helper('n-even?', _.range(1,11,2), options)).to.be.true;
+            expect(helper('n-even?', range(0,11), options)).to.be.false;
+            expect(helper('n-even?', range(1,11,2), options)).to.be.true;
         });
 
         it('-contain?', function () {
             var helper = mock.helper('-contain?');
 
-            expect(helper(0, _.range(0,11), options)).to.be.true;
-            expect(helper(11, _.range(0,11), options)).to.be.false;
+            expect(helper(0, range(0,11), options)).to.be.true;
+            expect(helper(11, range(0,11), options)).to.be.false;
         });
     });
 

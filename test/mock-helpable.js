@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 var _create = function(){
     var mock = {
         helpers: {}
@@ -11,7 +9,7 @@ var _create = function(){
         if( helper ){
             mock.helpers[name] = helper;
         }else{
-            _.extend(mock.helpers, name);
+            Object.assign(mock.helpers, name);
         }
     };
 
