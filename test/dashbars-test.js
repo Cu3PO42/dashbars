@@ -15,7 +15,7 @@ var _registerer = function(_register){
 
 describe('Dashbars', function () {
     describe('mock:', function () {
-        var dashbars = require('../dist/index').cons(_registerer);
+        var dashbars = require('../lib/dashbars').cons(_registerer);
 
         dashbars.help(require('./mock-helpable').create());
 
@@ -25,7 +25,7 @@ describe('Dashbars', function () {
     });
 
     describe('Handlebars:', function () {
-        var dashbars = require('../dist/index').cons(_registerer);
+        var dashbars = require('../lib/dashbars').cons(_registerer);
 
         dashbars.help(require('handlebars').create());
 
