@@ -3,7 +3,7 @@
 
 var expect = require('chai').expect;
 var mock = require('./mock-helpable').create();
-const range = require('lodash.range');
+const range = require('lodash/range');
 
 describe('dash', function () {
     require('../lib/dashbars').create().help(mock);
