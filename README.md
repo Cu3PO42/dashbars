@@ -334,19 +334,6 @@ These helpers with files supports only for node.
 
 - [f-read-text](#f-read-text-path-encoding) `(path, encoding)`
 
-### Date
-
-Date helpers are developed on [momentjs][]. See [the documentation](http://momentjs.com/docs/) for more details.
-
-[momentjs]: http://momentjs.com/
-
-- [d-iso](#d-iso-d) `(d)`
-- [d-format](#d-format-format-d) `(format, d)`
-- [d-now](#d-now) `()`
-- [d-date](#d-date-format-d) `(format, d)`
-- [d-add](#d-add-n-unit-d) `(n, unit, d)`
-- [d-subtract](#d-subtract-n-unit-d) `(n, unit, d)`
-
 ## API
 
 Functions and Helpers

@@ -17,8 +17,7 @@
         "helpers"
     ],
     "dependencies": {
-        "lodash": "^3.8.0",
-        "moment": "^2.10.2"
+        "lodash": "^3.8.0"
     },
     "devDependencies": {
         "chai": "^2.3.0",
